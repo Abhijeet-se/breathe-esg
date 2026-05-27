@@ -1,0 +1,19 @@
+/* pages/AuditTrailPage.css */
+
+.audit-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.audit-page__filters {
+  display: flex;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  flex-wrap: wrap;
+}
+
+.audit-page__filters .input-field {
+  min-width: 160px;
+  flex: 1;
+}

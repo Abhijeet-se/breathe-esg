@@ -1,0 +1,73 @@
+/* components/UploadSummary.css */
+
+.upload-summary {
+  padding: var(--space-6);
+}
+
+.upload-summary__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-5);
+}
+
+.upload-summary__title {
+  font-size: var(--font-size-md);
+  font-weight: 700;
+  color: var(--color-success);
+}
+
+.upload-summary__batch {
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+  font-family: monospace;
+}
+
+.upload-summary__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+.upload-summary__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-4);
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(148, 163, 184, 0.06);
+}
+
+.upload-summary__value {
+  font-size: var(--font-size-2xl);
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.upload-summary__label {
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+}
+
+/* ── Stacked bar ──────────────────────────────────────────── */
+.upload-summary__bar {
+  display: flex;
+  height: 8px;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  background: var(--bg-tertiary);
+}
+
+.upload-summary__segment {
+  height: 100%;
+  transition: width var(--transition-base);
+}
+
+@media (max-width: 640px) {
+  .upload-summary__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

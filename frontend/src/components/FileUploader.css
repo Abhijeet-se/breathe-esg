@@ -1,0 +1,91 @@
+/* components/FileUploader.css */
+
+.file-uploader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+/* ── Drop Zone ────────────────────────────────────────────── */
+.file-uploader__zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: var(--space-12) var(--space-8);
+  border: 2px dashed var(--glass-border);
+  border-radius: var(--radius-xl);
+  background: rgba(30, 41, 59, 0.25);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-align: center;
+}
+
+.file-uploader__zone:hover,
+.file-uploader__zone--active {
+  border-color: var(--color-emerald-500);
+  background: rgba(16, 185, 129, 0.04);
+}
+
+.file-uploader__zone--has-file {
+  padding: var(--space-6) var(--space-8);
+  cursor: default;
+  border-style: solid;
+  border-color: var(--glass-border-hover);
+}
+
+.file-uploader__icon {
+  color: var(--text-tertiary);
+}
+
+.file-uploader__label {
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.file-uploader__hint {
+  font-size: var(--font-size-sm);
+  color: var(--text-tertiary);
+}
+
+/* ── Selected file ────────────────────────────────────────── */
+.file-uploader__selected {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  width: 100%;
+  color: var(--text-primary);
+}
+
+.file-uploader__filename {
+  font-weight: 600;
+  font-size: var(--font-size-base);
+}
+
+.file-uploader__filesize {
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+}
+
+/* ── Error ────────────────────────────────────────────────── */
+.file-uploader__error {
+  color: var(--color-danger);
+  font-size: var(--font-size-sm);
+}
+
+/* ── Progress ─────────────────────────────────────────────── */
+.file-uploader__progress {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.file-uploader__pct {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-emerald-400);
+  min-width: 40px;
+  text-align: right;
+}

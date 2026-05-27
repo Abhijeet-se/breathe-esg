@@ -1,0 +1,52 @@
+/* pages/RecordDetailPage.css */
+
+.record-detail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+/* ── Header ───────────────────────────────────────────────── */
+.record-detail__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.record-detail__header-info {
+  flex: 1;
+}
+
+.record-detail__id {
+  font-family: monospace;
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+}
+
+.record-detail__header-badges {
+  display: flex;
+  gap: var(--space-2);
+}
+
+/* ── Body split ───────────────────────────────────────────── */
+.record-detail__body {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: var(--space-5);
+}
+
+/* ── Action buttons ───────────────────────────────────────── */
+.record-detail__actions {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--glass-border);
+}
+
+@media (max-width: 1024px) {
+  .record-detail__body {
+    grid-template-columns: 1fr;
+  }
+}

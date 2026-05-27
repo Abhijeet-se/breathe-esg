@@ -1,0 +1,67 @@
+/* pages/UploadPage.css */
+
+.upload-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  max-width: 900px;
+}
+
+/* ── Source type cards ─────────────────────────────────────── */
+.upload-page__sources {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+
+.upload-page__source {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-family);
+  transition: all var(--transition-base);
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+}
+
+.upload-page__source:hover {
+  border-color: var(--glass-border-hover);
+  transform: translateY(-2px);
+}
+
+.upload-page__source--active {
+  border-color: var(--accent);
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.15), inset 0 0 0 1px var(--accent);
+}
+
+.upload-page__source-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.04);
+  flex-shrink: 0;
+}
+
+.upload-page__source-label {
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.upload-page__source-desc {
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+  margin-top: 2px;
+}
+
+@media (max-width: 768px) {
+  .upload-page__sources {
+    grid-template-columns: 1fr;
+  }
+}

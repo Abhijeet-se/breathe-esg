@@ -1,0 +1,35 @@
+/* components/EmissionsChart.css */
+
+.emissions-chart {
+  padding: var(--space-6);
+}
+
+.emissions-chart__title {
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  margin-bottom: var(--space-5);
+  color: var(--text-primary);
+}
+
+.emissions-chart__body {
+  width: 100%;
+}
+
+/* Custom tooltip */
+.chart-tooltip {
+  padding: var(--space-3) var(--space-4) !important;
+  border-radius: var(--radius-lg) !important;
+  min-width: 140px;
+}
+
+.chart-tooltip__label {
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+  margin-bottom: 2px;
+}
+
+.chart-tooltip__value {
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  color: var(--text-primary);
+}

@@ -1,0 +1,62 @@
+/* pages/ReviewQueuePage.css */
+
+.review-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+/* ── Filter bar ───────────────────────────────────────────── */
+.review-page__filters {
+  padding: var(--space-5);
+}
+
+.review-page__filter-row {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-4);
+}
+
+.review-page__filter-row .input-field {
+  flex: 1;
+  min-width: 140px;
+}
+
+.review-page__search {
+  position: relative;
+  flex: 2;
+  min-width: 200px;
+}
+
+.review-page__search svg {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-tertiary);
+  pointer-events: none;
+}
+
+.review-page__search .input-field {
+  padding-left: 36px;
+}
+
+/* ── Actions bar ──────────────────────────────────────────── */
+.review-page__actions-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.review-page__count {
+  font-size: var(--font-size-sm);
+  color: var(--text-tertiary);
+}
+
+.review-page__bulk {
+  display: flex;
+  gap: var(--space-2);
+}

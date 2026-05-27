@@ -1,0 +1,36 @@
+/* layouts/MainLayout.css — shell layout styles */
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* The main area sits to the right of the sidebar */
+.layout__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-left: var(--sidebar-width);
+  transition: margin-left var(--transition-slow);
+  min-height: 100vh;
+}
+
+.layout--collapsed .layout__main {
+  margin-left: var(--sidebar-collapsed);
+}
+
+/* Page content area */
+.layout__content {
+  flex: 1;
+  padding: var(--space-8);
+  padding-top: calc(var(--topbar-height) + var(--space-8));
+  max-width: 1440px;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .layout__content {
+    padding: var(--space-4);
+    padding-top: calc(var(--topbar-height) + var(--space-4));
+  }
+}
