@@ -39,7 +39,10 @@ SECRET_KEY = os.environ.get(
 )
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DJANGO_DEBUG', 'True').lower() in ('true', '1', 'yes')
+# Auto-detect Render (RENDER env var is set automatically by Render.com)
+# Default to False on Render, True for local development
+_debug_default = 'False' if os.environ.get('RENDER') else 'True'
+DEBUG = os.environ.get('DJANGO_DEBUG', _debug_default).lower() in ('true', '1', 'yes')
 
 # Parse ALLOWED_HOSTS from comma-separated env var, with sensible defaults
 # Reads DJANGO_ALLOWED_HOSTS (set in render.yaml) or ALLOWED_HOSTS as fallback
