@@ -215,11 +215,12 @@ STORAGES = {
 }
 
 # Frontend build output directory (populated by Vite build or Dockerfile)
-# In production, the built React SPA is served from here
+# In production, the built React SPA is served from here.
+# We always set these paths — collectstatic handles missing dirs gracefully,
+# and WhiteNoise checks existence at runtime.
 FRONTEND_DIR = BASE_DIR / 'frontend_dist'
-if FRONTEND_DIR.exists():
-    STATICFILES_DIRS = [FRONTEND_DIR]
-    WHITENOISE_ROOT = FRONTEND_DIR  # Serve index.html, favicon, etc. from root
+STATICFILES_DIRS = [str(FRONTEND_DIR)]
+WHITENOISE_ROOT = str(FRONTEND_DIR)
 
 # Media files: uploaded CSV/Excel files for ingestion
 MEDIA_URL = '/media/'
