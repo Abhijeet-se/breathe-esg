@@ -42,9 +42,17 @@ SECRET_KEY = os.environ.get(
 DEBUG = os.environ.get('DJANGO_DEBUG', 'True').lower() in ('true', '1', 'yes')
 
 # Parse ALLOWED_HOSTS from comma-separated env var, with sensible defaults
-ALLOWED_HOSTS = os.environ.get(
+# Reads DJANGO_ALLOWED_HOSTS (set in render.yaml) or ALLOWED_HOSTS as fallback
+_hosts_env = os.environ.get('DJANGO_ALLOWED_HOSTS') or os.environ.get(
     'ALLOWED_HOSTS', 'localhost,127.0.0.1,0.0.0.0'
-).split(',')
+)
+ALLOWED_HOSTS = [h.strip() for h in _hosts_env.split(',') if h.strip()]
+
+# In production (DEBUG=False), if no hosts are explicitly set, allow all
+# This prevents DisallowedHost errors on auto-generated Render domains
+if not DEBUG and ALLOWED_HOSTS == ['localhost', '127.0.0.1', '0.0.0.0']:
+    ALLOWED_HOSTS = ['*']
+
 
 # =============================================================================
 # APPLICATION DEFINITION
@@ -172,10 +180,16 @@ SIMPLE_JWT = {
 # CORS CONFIGURATION
 # =============================================================================
 # Allow the React frontend (Vite default port) to make API requests
-CORS_ALLOWED_ORIGINS = os.environ.get(
+_cors_origins = os.environ.get(
     'CORS_ALLOWED_ORIGINS',
     'http://localhost:5173,http://127.0.0.1:5173'
-).split(',')
+)
+CORS_ALLOWED_ORIGINS = [o.strip() for o in _cors_origins.split(',') if o.strip()]
+
+# In production, the frontend is served from the same origin as the API,
+# so we allow all origins to handle auto-generated Render subdomains
+if not DEBUG:
+    CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOW_CREDENTIALS = True  # Allow cookies/auth headers
 
