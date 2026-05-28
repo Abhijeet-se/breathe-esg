@@ -1,10 +1,6 @@
 # ============================================
 # Render Blueprint — Breathe ESG Platform
 # ============================================
-# Deploy via: render.com > New Blueprint > Connect GitHub repo
-# This configures a web service + PostgreSQL database.
-# Docs: https://render.com/docs/blueprint-spec
-# ============================================
 
 databases:
   - name: breathe-esg-db
@@ -19,7 +15,7 @@ services:
     plan: free
     runtime: python
     region: oregon
-    buildCommand: "chmod +x build.sh && ./build.sh"
+    buildCommand: "pip install -r backend/requirements.txt && cd backend && python manage.py migrate --noinput && python manage.py collectstatic --noinput"
     startCommand: "cd backend && gunicorn breathe_esg.wsgi:application --bind 0.0.0.0:$PORT --workers 2 --timeout 120"
     healthCheckPath: /api/health/
     envVars:
@@ -33,9 +29,5 @@ services:
         value: "False"
       - key: DJANGO_ALLOWED_HOSTS
         value: ".onrender.com"
-      - key: CORS_ALLOWED_ORIGINS
-        value: "https://breathe-esg.onrender.com"
       - key: PYTHON_VERSION
         value: "3.11.6"
-      - key: NODE_VERSION
-        value: "20.10.0"
