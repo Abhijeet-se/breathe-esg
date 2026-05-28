@@ -23,8 +23,7 @@ db.sqlite3
 /staticfiles/
 *.log
 
-# Environment variables
-.env
+# Environment variables (keep .env.local and .env.production private)
 .env.local
 .env.production
 
