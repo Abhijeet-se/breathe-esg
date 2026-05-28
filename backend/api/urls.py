@@ -47,6 +47,7 @@ from .views import (
     NormalizedRecordViewSet,
     AuditLogViewSet,
     HealthCheckView,
+    SeedDataView,
 )
 
 # DRF Router for viewsets - automatically generates URL patterns
@@ -79,4 +80,7 @@ urlpatterns = [
 
     # --- Health Check ---
     path('health/', HealthCheckView.as_view(), name='health_check'),
+
+    # --- One-time seed endpoint ---
+    path('seed/', SeedDataView.as_view(), name='seed_data'),
 ]

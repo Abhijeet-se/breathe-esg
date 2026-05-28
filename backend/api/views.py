@@ -743,3 +743,40 @@ class HealthCheckView(APIView):
     def get(self, request):
         return Response({'status': 'ok', 'service': 'breathe-esg'})
 
+
+# =============================================================================
+# SEED DATA VIEW (one-time setup endpoint)
+# =============================================================================
+class SeedDataView(APIView):
+    """
+    POST /api/seed/ - One-time database seeding endpoint.
+
+    Creates demo tenants, users, and sample data. Safe to call multiple
+    times — uses get_or_create so existing data won't be duplicated.
+    No authentication required (for initial setup on fresh deployments).
+    """
+    permission_classes = [AllowAny]
+    authentication_classes = []
+
+    def post(self, request):
+        from django.core.management import call_command
+        from io import StringIO
+
+        out = StringIO()
+        try:
+            call_command('create_sample_data', stdout=out)
+            return Response({
+                'status': 'success',
+                'message': 'Sample data created',
+                'output': out.getvalue(),
+            })
+        except Exception as e:
+            return Response({
+                'status': 'error',
+                'message': str(e),
+            }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+    def get(self, request):
+        """GET also works for convenience."""
+        return self.post(request)
+
